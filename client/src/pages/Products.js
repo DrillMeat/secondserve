@@ -1,0 +1,172 @@
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Search, Filter } from 'lucide-react';
+import ProductCard from '../components/products/ProductCard';
+
+const Products = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  // Sample products for testing
+  const sampleProducts = [
+    {
+      _id: '1',
+      name: 'Wireless Bluetooth Headphones',
+      description: 'High-quality wireless headphones with noise cancellation',
+      price: 99.99,
+      originalPrice: 129.99,
+      images: ['https://via.placeholder.com/300x300?text=Headphones'],
+      category: 'Electronics',
+      stock: 15,
+      rating: { average: 4.5, count: 128 },
+      shopName: 'TechStore',
+      discountPercentage: 23
+    },
+    {
+      _id: '2',
+      name: 'Organic Cotton T-Shirt',
+      description: 'Comfortable organic cotton t-shirt in various colors',
+      price: 24.99,
+      images: ['https://via.placeholder.com/300x300?text=T-Shirt'],
+      category: 'Clothing',
+      stock: 50,
+      rating: { average: 4.2, count: 89 },
+      shopName: 'FashionHub'
+    },
+    {
+      _id: '3',
+      name: 'Smartphone Case',
+      description: 'Durable protective case for smartphones',
+      price: 19.99,
+      originalPrice: 29.99,
+      images: ['https://via.placeholder.com/300x300?text=Phone+Case'],
+      category: 'Electronics',
+      stock: 30,
+      rating: { average: 4.0, count: 156 },
+      shopName: 'MobileWorld',
+      discountPercentage: 33
+    },
+    {
+      _id: '4',
+      name: 'Coffee Mug Set',
+      description: 'Beautiful ceramic coffee mug set of 4',
+      price: 34.99,
+      images: ['https://via.placeholder.com/300x300?text=Coffee+Mugs'],
+      category: 'Home & Garden',
+      stock: 25,
+      rating: { average: 4.7, count: 67 },
+      shopName: 'HomeDecor'
+    }
+  ];
+
+  useEffect(() => {
+    // Simulate API call
+    setTimeout(() => {
+      setProducts(sampleProducts);
+      setLoading(false);
+    }, 1000);
+  }, []);
+
+  const categories = ['All', 'Electronics', 'Clothing', 'Home & Garden', 'Books', 'Sports', 'Beauty', 'Food', 'Other'];
+
+  const filteredProducts = products.filter(product => {
+    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === '' || selectedCategory === 'All' || product.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8"
+        >
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">All Products</h1>
+          <p className="text-gray-600">Discover amazing products from trusted sellers</p>
+        </motion.div>
+
+        {/* Search and Filter */}
+        <div className="mb-8 space-y-4">
+          {/* Search Bar */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="input-field pl-10"
+            />
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex items-center space-x-2 overflow-x-auto pb-2">
+            <Filter className="h-5 w-5 text-gray-500 flex-shrink-0" />
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category === 'All' ? '' : category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
+                  (selectedCategory === '' && category === 'All') || selectedCategory === category
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className="mb-6">
+          <p className="text-gray-600">
+            Showing {filteredProducts.length} of {products.length} products
+          </p>
+        </div>
+
+        {/* Products Grid */}
+        {filteredProducts.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={product._id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <ProductCard product={product} />
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <div className="w-16 h-16 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center">
+              <Search className="w-8 h-8 text-gray-400" />
+            </div>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No products found</h3>
+            <p className="text-gray-500">Try adjusting your search or filter criteria</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Products; 
