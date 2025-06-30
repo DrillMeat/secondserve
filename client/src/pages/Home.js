@@ -164,9 +164,40 @@ const Home = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold text-gray-900 italic mb-6">
-              Download our app to unlock all features.
-            </h2>
+            {/* Two-column layout for Instagram and App Download */}
+            <div className="flex flex-col lg:flex-row justify-center items-center gap-16">
+              {/* Left: Instagram */}
+              <div className="flex flex-col items-center justify-center w-full lg:w-1/2 mb-8 lg:mb-0">
+                <span className="text-4xl md:text-5xl font-extrabold mb-8 font-[cursive] italic">Follow us:</span>
+                <a href="https://www.instagram.com/secondserve.16?igsh=cGloNncxNWtvZmh4" target="_blank" rel="noopener noreferrer">
+                  <img 
+                    src="/inst.png" 
+                    alt="Instagram" 
+                    className="w-64 h-64 object-contain rounded-full shadow-lg cursor-pointer border-4 border-pink-500 hover:scale-105 transition-transform duration-200"
+                  />
+                </a>
+              </div>
+              {/* Right: App Download */}
+              <div className="flex flex-col items-center justify-center w-full lg:w-1/2">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 italic mb-8 font-[cursive]">Download our app to unlock all features.</h2>
+                <div className="flex flex-row items-center space-x-8">
+                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src="/balls.png" 
+                      alt="Google Play" 
+                      className="w-48 h-auto cursor-pointer"
+                    />
+                  </a>
+                  <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src="/App-Store-Logo-2020.png" 
+                      alt="Download on App Store" 
+                      className="w-56 h-auto cursor-pointer"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
           {featuredProducts && featuredProducts.length > 0 ? (
@@ -186,22 +217,7 @@ const Home = () => {
           ) : (
             <div className="text-center py-12">
               <div className="max-w-4xl mx-auto">
-                <div className="flex justify-center items-center space-x-8 mt-2 mb-6">
-                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="/balls.png" 
-                      alt="Google Play" 
-                      className="w-80 h-auto cursor-pointer"
-                    />
-                  </a>
-                  <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
-                    <img 
-                      src="/App-Store-Logo-2020.png" 
-                      alt="Download on App Store" 
-                      className="w-96 h-auto cursor-pointer"
-                    />
-                  </a>
-                </div>
+                {/* Removed old row with Google Play, App Store, and Instagram icons */}
               </div>
             </div>
           )}

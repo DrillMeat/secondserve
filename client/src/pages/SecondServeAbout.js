@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../components/layout/Footer';
+import BoardOfCreators from '../components/layout/BoardOfCreators';
 
 const SecondServeAbout = () => {
   return (
@@ -95,6 +96,7 @@ const SecondServeAbout = () => {
         </div>
       </section>
 
+      <BoardOfCreators />
       <Footer />
     </div>
   );

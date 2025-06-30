@@ -11,7 +11,7 @@ const ContactUs = () => {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-green-900 mb-4 tracking-wider uppercase text-center md:text-left">Provider of the website:</h2>
             <div className="text-gray-700 text-lg text-center md:text-left">
-              <div className="mb-2">Tim (Boss)</div>
+              <div className="mb-2">Tim</div>
             </div>
           </div>
           <div>
