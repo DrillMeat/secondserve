@@ -13,51 +13,55 @@ const Products = () => {
   const sampleProducts = [
     {
       _id: '1',
-      name: 'Wireless Bluetooth Headphones',
-      description: 'High-quality wireless headphones with noise cancellation',
-      price: 99.99,
-      originalPrice: 129.99,
-      images: ['https://via.placeholder.com/300x300?text=Headphones'],
-      category: 'Electronics',
-      stock: 15,
-      rating: { average: 4.5, count: 128 },
-      shopName: 'TechStore',
-      discountPercentage: 23
+      name: 'Fresh Strawberries',
+      description: 'Juicy, sweet strawberries picked at peak ripeness.',
+      price: 4.99,
+      originalPrice: 7.68,
+      images: ['/fresh.png'],
+      categories: ['Food', 'Berries'],
+      stock: 40,
+      rating: { average: 4.8, count: 120 },
+      shopName: 'BerryFarm',
+      discountPercentage: 35
     },
     {
       _id: '2',
-      name: 'Organic Cotton T-Shirt',
-      description: 'Comfortable organic cotton t-shirt in various colors',
-      price: 24.99,
-      images: ['https://via.placeholder.com/300x300?text=T-Shirt'],
-      category: 'Clothing',
-      stock: 50,
-      rating: { average: 4.2, count: 89 },
-      shopName: 'FashionHub'
+      name: 'Steak Meat',
+      description: 'Premium quality steak meat, perfect for grilling.',
+      price: 19.99,
+      originalPrice: 39.98,
+      images: ['/SteakMeat.png'],
+      categories: ['Food', 'Meats'],
+      stock: 20,
+      rating: { average: 4.7, count: 85 },
+      shopName: 'MeatHouse',
+      discountPercentage: 50
     },
     {
       _id: '3',
-      name: 'Smartphone Case',
-      description: 'Durable protective case for smartphones',
-      price: 19.99,
-      originalPrice: 29.99,
-      images: ['https://via.placeholder.com/300x300?text=Phone+Case'],
-      category: 'Electronics',
-      stock: 30,
-      rating: { average: 4.0, count: 156 },
-      shopName: 'MobileWorld',
-      discountPercentage: 33
+      name: 'Tomatoes',
+      description: 'Fresh, organic tomatoes full of flavor.',
+      price: 2.99,
+      originalPrice: 4.60,
+      images: ['/tomatoes.png'],
+      categories: ['Food', 'Vegetables', 'Groceries'],
+      stock: 60,
+      rating: { average: 4.6, count: 102 },
+      shopName: 'VeggieMarket',
+      discountPercentage: 35
     },
     {
       _id: '4',
-      name: 'Coffee Mug Set',
-      description: 'Beautiful ceramic coffee mug set of 4',
-      price: 34.99,
-      images: ['https://via.placeholder.com/300x300?text=Coffee+Mugs'],
-      category: 'Home & Garden',
-      stock: 25,
-      rating: { average: 4.7, count: 67 },
-      shopName: 'HomeDecor'
+      name: 'Raw Pork',
+      description: 'Fresh raw pork, ideal for a variety of dishes.',
+      price: 9.99,
+      originalPrice: 15.37,
+      images: ['/rawpork.png'],
+      categories: ['Food', 'Meats'],
+      stock: 30,
+      rating: { average: 4.5, count: 77 },
+      shopName: 'MeatHouse',
+      discountPercentage: 35
     }
   ];
 
@@ -69,12 +73,12 @@ const Products = () => {
     }, 1000);
   }, []);
 
-  const categories = ['All', 'Electronics', 'Clothing', 'Home & Garden', 'Books', 'Sports', 'Beauty', 'Food', 'Other'];
+  const categories = ['Food', 'Groceries', 'Meats', 'Fruits', 'Vegetables', 'Bakery', 'Beverages', 'Snacks', 'Seafood', 'Berries'];
 
   const filteredProducts = products.filter(product => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === '' || selectedCategory === 'All' || product.category === selectedCategory;
+    const matchesCategory = selectedCategory === '' || selectedCategory === 'All' || product.categories.includes(selectedCategory);
     return matchesSearch && matchesCategory;
   });
 
@@ -96,14 +100,14 @@ const Products = () => {
           className="mb-8"
         >
           <h1 className="text-3xl font-bold text-gray-900 mb-2">All Products</h1>
-          <p className="text-gray-600">Discover amazing products from trusted sellers</p>
+          <p className="text-gray-600">Buy fresh food for low price</p>
         </motion.div>
 
         {/* Search and Filter */}
         <div className="mb-8 space-y-4">
           {/* Search Bar */}
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
             <input
@@ -112,6 +116,7 @@ const Products = () => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="input-field pl-10"
+              style={{ paddingLeft: '2.5rem' }}
             />
           </div>
 

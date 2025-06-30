@@ -110,10 +110,8 @@ const ProductCard = ({ product }) => {
 
           {/* Stock Status */}
           <div className="flex items-center justify-between">
-            <span className={`text-sm ${
-              product.stock > 0 ? 'text-green-600' : 'text-red-600'
-            }`}>
-              {product.stock > 0 ? `${product.stock} in stock` : 'Out of stock'}
+            <span className="text-sm text-green-600">
+              Pick up in {product.shopName} store
             </span>
           </div>
         </div>
@@ -138,7 +136,7 @@ const ProductCard = ({ product }) => {
               ? 'Out of Stock'
               : isInCart(product._id)
               ? 'In Cart'
-              : 'Add to Cart'}
+              : 'Book for 2 hours'}
           </span>
         </button>
       </div>

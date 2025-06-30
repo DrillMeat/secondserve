@@ -113,10 +113,8 @@ const Register = () => {
         className="max-w-md w-full space-y-8"
       >
         <div>
-          <div className="flex justify-center">
-            <div className="w-12 h-12 bg-green-700 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">S</span>
-            </div>
+          <div className="flex justify-center mb-2">
+            <img src="/Seco 3.png" alt="SecondServe Logo" className="w-24 h-24 rounded-full shadow-lg object-cover bg-white" />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Create your account
@@ -140,9 +138,6 @@ const Register = () => {
                 Full Name
               </label>
               <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
-                </div>
                 <input
                   id="name"
                   name="name"
@@ -151,7 +146,7 @@ const Register = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className={`input-field pl-10 ${
+                  className={`input-field ${
                     errors.name ? 'border-red-500 focus:ring-red-500' : ''
                   }`}
                   placeholder="Enter your full name"
@@ -168,9 +163,6 @@ const Register = () => {
                 Email address
               </label>
               <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                </div>
                 <input
                   id="email"
                   name="email"
@@ -179,7 +171,7 @@ const Register = () => {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className={`input-field pl-10 ${
+                  className={`input-field ${
                     errors.email ? 'border-red-500 focus:ring-red-500' : ''
                   }`}
                   placeholder="Enter your email"
@@ -248,9 +240,6 @@ const Register = () => {
                   Shop Name
                 </label>
                 <div className="mt-1 relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Store className="h-5 w-5 text-gray-400" />
-                  </div>
                   <input
                     id="shopName"
                     name="shopName"
@@ -258,7 +247,7 @@ const Register = () => {
                     required
                     value={formData.shopName}
                     onChange={handleChange}
-                    className={`input-field pl-10 ${
+                    className={`input-field ${
                       errors.shopName ? 'border-red-500 focus:ring-red-500' : ''
                     }`}
                     placeholder="Enter your shop name"
@@ -294,9 +283,6 @@ const Register = () => {
                 Password
               </label>
               <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
-                </div>
                 <input
                   id="password"
                   name="password"
@@ -305,7 +291,7 @@ const Register = () => {
                   required
                   value={formData.password}
                   onChange={handleChange}
-                  className={`input-field pl-10 pr-10 ${
+                  className={`input-field pr-10 ${
                     errors.password ? 'border-red-500 focus:ring-red-500' : ''
                   }`}
                   placeholder="Create a password"
@@ -333,9 +319,6 @@ const Register = () => {
                 Confirm Password
               </label>
               <div className="mt-1 relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
-                </div>
                 <input
                   id="confirmPassword"
                   name="confirmPassword"
@@ -344,7 +327,7 @@ const Register = () => {
                   required
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  className={`input-field pl-10 pr-10 ${
+                  className={`input-field pr-10 ${
                     errors.confirmPassword ? 'border-red-500 focus:ring-red-500' : ''
                   }`}
                   placeholder="Confirm your password"

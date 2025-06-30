@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   ShoppingCart, 
@@ -21,6 +21,7 @@ const Navbar = () => {
   const { user, logout, isAuthenticated, isShopOwner } = useAuth();
   const { getCartCount, openCart } = useCart();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     logout();
@@ -30,6 +31,8 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const toggleUserMenu = () => setIsUserMenuOpen(!isUserMenuOpen);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50">
@@ -47,26 +50,32 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8">
             <Link 
               to="/" 
-              className="text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600"
+              className={`text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600 ${isActive('/') ? 'bg-green-600 text-white border-green-600' : ''}`}
             >
               Home
             </Link>
             <Link 
               to="/products" 
-              className="text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600"
+              className={`text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600 ${isActive('/products') ? 'bg-green-600 text-white border-green-600' : ''}`}
             >
               Products
             </Link>
             <Link 
-              to="/about" 
-              className="text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600"
+              to="/about-secondserve" 
+              className={`text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600 ${isActive('/about-secondserve') ? 'bg-green-600 text-white border-green-600' : ''}`}
             >
-              About Us
+              About
+            </Link>
+            <Link 
+              to="/contact" 
+              className={`text-gray-700 border border-gray-300 rounded-lg px-4 py-2 transition-colors duration-200 hover:text-white hover:bg-green-600 hover:border-green-600 ${isActive('/contact') ? 'bg-green-600 text-white border-green-600' : ''}`}
+            >
+              Contact Us
             </Link>
             {isShopOwner && (
               <Link 
                 to="/shop" 
-                className="text-gray-700 hover:text-green-600 transition-colors duration-200 flex items-center space-x-1"
+                className={`text-gray-700 hover:text-green-600 transition-colors duration-200 flex items-center space-x-1 ${isActive('/shop') ? 'bg-green-600 text-white border-green-600' : ''}`}
               >
                 <Store size={16} />
                 <span>Shop Dashboard</span>
@@ -161,7 +170,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-200"
+                  className={`border border-green-600 bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-green-700 hover:border-green-700`}
                 >
                   Register
                 </Link>
@@ -189,29 +198,36 @@ const Navbar = () => {
             <div className="flex flex-col space-y-4">
               <Link
                 to="/"
-                className="text-gray-700 hover:text-green-600 transition-colors duration-200"
+                className={`text-gray-700 hover:text-green-600 transition-colors duration-200 ${isActive('/') ? 'bg-green-600 text-white border-green-600' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="text-gray-700 hover:text-green-600 transition-colors duration-200"
+                className={`text-gray-700 hover:text-green-600 transition-colors duration-200 ${isActive('/products') ? 'bg-green-600 text-white border-green-600' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </Link>
               <Link
-                to="/about"
-                className="text-gray-700 hover:text-green-600 transition-colors duration-200"
+                to="/about-secondserve"
+                className={`text-gray-700 hover:text-green-600 transition-colors duration-200 ${isActive('/about-secondserve') ? 'bg-green-600 text-white border-green-600' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                About Us
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className={`text-gray-700 hover:text-green-600 transition-colors duration-200 ${isActive('/contact') ? 'bg-green-600 text-white border-green-600' : ''}`}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact Us
               </Link>
               {isShopOwner && (
                 <Link
                   to="/shop"
-                  className="text-gray-700 hover:text-green-600 transition-colors duration-200 flex items-center space-x-2"
+                  className={`text-gray-700 hover:text-green-600 transition-colors duration-200 flex items-center space-x-2 ${isActive('/shop') ? 'bg-green-600 text-white border-green-600' : ''}`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Store size={16} />
@@ -229,7 +245,7 @@ const Navbar = () => {
                   </Link>
                   <Link
                     to="/register"
-                    className="bg-green-700 text-white px-4 py-2 rounded-lg hover:bg-green-800 transition-colors duration-200 text-center"
+                    className={`border border-green-600 bg-green-600 text-white px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-green-700 hover:border-green-700`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Register

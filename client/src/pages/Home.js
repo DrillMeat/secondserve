@@ -9,7 +9,8 @@ import {
   Shield, 
   Star,
   ArrowRight,
-  Search
+  Search,
+  ShoppingCart
 } from 'lucide-react';
 import api from '../utils/api';
 import ProductCard from '../components/products/ProductCard';
@@ -46,8 +47,22 @@ const Home = () => {
     }
   ];
 
+  // Handler for basket click
+  const handleCartClick = () => {
+    window.location.href = '/products';
+  };
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Cart Icon Top Right */}
+      <button
+        onClick={handleCartClick}
+        className="absolute top-6 right-8 z-50 bg-white rounded-full shadow p-4 hover:bg-gray-100 transition"
+        aria-label="Go to Products"
+      >
+        <ShoppingCart size={48} className="text-gray-700" />
+      </button>
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-700 to-green-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,16 +187,20 @@ const Home = () => {
             <div className="text-center py-12">
               <div className="max-w-4xl mx-auto">
                 <div className="flex justify-center items-center space-x-8 mt-2 mb-6">
-                  <img 
-                    src="/balls.png" 
-                    alt="Balls" 
-                    className="w-80 h-auto"
-                  />
-                  <img 
-                    src="/App-Store-Logo-2020.png" 
-                    alt="Download on App Store" 
-                    className="w-96 h-auto"
-                  />
+                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src="/balls.png" 
+                      alt="Google Play" 
+                      className="w-80 h-auto cursor-pointer"
+                    />
+                  </a>
+                  <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
+                    <img 
+                      src="/App-Store-Logo-2020.png" 
+                      alt="Download on App Store" 
+                      className="w-96 h-auto cursor-pointer"
+                    />
+                  </a>
                 </div>
               </div>
             </div>

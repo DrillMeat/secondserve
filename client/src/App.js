@@ -21,77 +21,83 @@ import EditProduct from './pages/shop/EditProduct';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import ShopOwnerRoute from './components/auth/ShopOwnerRoute';
 import { useAuth } from './contexts/AuthContext';
+import SecondServeAbout from './pages/SecondServeAbout';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen">
       <Navbar />
-      <main className="pt-16">
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          
-          {/* Protected Routes */}
-          <Route path="/cart" element={
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          } />
-          <Route path="/checkout" element={
-            <ProtectedRoute>
-              <Checkout />
-            </ProtectedRoute>
-          } />
-          <Route path="/profile" element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          } />
-          <Route path="/orders" element={
-            <ProtectedRoute>
-              <Orders />
-            </ProtectedRoute>
-          } />
-          <Route path="/orders/:id" element={
-            <ProtectedRoute>
-              <OrderDetail />
-            </ProtectedRoute>
-          } />
-          
-          {/* Shop Owner Routes */}
-          <Route path="/shop" element={
-            <ShopOwnerRoute>
-              <ShopDashboard />
-            </ShopOwnerRoute>
-          } />
-          <Route path="/shop/products" element={
-            <ShopOwnerRoute>
-              <ShopProducts />
-            </ShopOwnerRoute>
-          } />
-          <Route path="/shop/products/add" element={
-            <ShopOwnerRoute>
-              <AddProduct />
-            </ShopOwnerRoute>
-          } />
-          <Route path="/shop/products/edit/:id" element={
-            <ShopOwnerRoute>
-              <EditProduct />
-            </ShopOwnerRoute>
-          } />
-          <Route path="/shop/orders" element={
-            <ShopOwnerRoute>
-              <ShopOrders />
-            </ShopOwnerRoute>
-          } />
-        </Routes>
-      </main>
+      <div className="main-content">
+        <main className="pt-16">
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/about-secondserve" element={<SecondServeAbout />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            
+            {/* Protected Routes */}
+            <Route path="/cart" element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            } />
+            <Route path="/checkout" element={
+              <ProtectedRoute>
+                <Checkout />
+              </ProtectedRoute>
+            } />
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            } />
+            <Route path="/orders" element={
+              <ProtectedRoute>
+                <Orders />
+              </ProtectedRoute>
+            } />
+            <Route path="/orders/:id" element={
+              <ProtectedRoute>
+                <OrderDetail />
+              </ProtectedRoute>
+            } />
+            
+            {/* Shop Owner Routes */}
+            <Route path="/shop" element={
+              <ShopOwnerRoute>
+                <ShopDashboard />
+              </ShopOwnerRoute>
+            } />
+            <Route path="/shop/products" element={
+              <ShopOwnerRoute>
+                <ShopProducts />
+              </ShopOwnerRoute>
+            } />
+            <Route path="/shop/products/add" element={
+              <ShopOwnerRoute>
+                <AddProduct />
+              </ShopOwnerRoute>
+            } />
+            <Route path="/shop/products/edit/:id" element={
+              <ShopOwnerRoute>
+                <EditProduct />
+              </ShopOwnerRoute>
+            } />
+            <Route path="/shop/orders" element={
+              <ShopOwnerRoute>
+                <ShopOrders />
+              </ShopOwnerRoute>
+            } />
+          </Routes>
+        </main>
+      </div>
       <Footer />
     </div>
   );
