@@ -4,7 +4,7 @@ const creators = [
   {
     name: 'Tim',
     title: 'Website Creator (CEO) (Boss)',
-    img: '/Tim.png',
+    img: '/Tim.PNG',
     desc: ''
   },
   {
