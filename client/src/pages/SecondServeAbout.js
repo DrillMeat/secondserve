@@ -15,7 +15,7 @@ const SecondServeAbout = () => {
           SecondServe is an AI powered food discount generator that gives people a sustainable way to shop and gives stores a way to combat food waste. We believe that there's something more to be done with the 133 Million pounds of food thrown away.
         </p>
         <div className="flex justify-center">
-          <img src="/Seco 3.png" alt="SecondServe Hero" className="w-[400px] h-[250px] object-cover rounded-lg shadow-lg" />
+          <img src="/seco4.png" alt="SecondServe Hero" className="w-[400px] h-[250px] object-cover rounded-lg shadow-lg" />
         </div>
       </section>
 
