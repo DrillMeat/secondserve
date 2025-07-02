@@ -72,6 +72,13 @@ const Navbar = () => {
             >
               Contact Us
             </Link>
+            {/* Support us link */}
+            <Link 
+              to="/support-us"
+              className="text-green-700 hover:text-green-900 font-semibold mx-2"
+            >
+              Support us
+            </Link>
             {isShopOwner && (
               <Link 
                 to="/shop" 
@@ -223,6 +230,14 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact Us
+              </Link>
+              {/* Support us link */}
+              <Link
+                to="/support-us"
+                className="text-green-700 hover:text-green-900 font-semibold"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Support us
               </Link>
               {isShopOwner && (
                 <Link

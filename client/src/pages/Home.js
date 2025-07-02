@@ -188,7 +188,7 @@ const Home = () => {
                       className="w-48 h-auto cursor-pointer"
                     />
                   </a>
-                  <a href="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
+                  <a hrefst="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
                     <img 
                       src="/App-Store-Logo-2020.png" 
                       alt="Download on App Store" 

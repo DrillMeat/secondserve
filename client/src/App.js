@@ -23,6 +23,7 @@ import ShopOwnerRoute from './components/auth/ShopOwnerRoute';
 import { useAuth } from './contexts/AuthContext';
 import SecondServeAbout from './pages/SecondServeAbout';
 import ContactUs from './pages/ContactUs';
+import SupportUs from "./pages/SupportUs";
 
 function App() {
   const { user } = useAuth();
@@ -95,6 +96,7 @@ function App() {
                 <ShopOrders />
               </ShopOwnerRoute>
             } />
+            <Route path="/support-us" element={<SupportUs />} />
           </Routes>
         </main>
       </div>
