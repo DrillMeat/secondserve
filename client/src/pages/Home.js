@@ -47,22 +47,8 @@ const Home = () => {
     }
   ];
 
-  // Handler for basket click
-  const handleCartClick = () => {
-    window.location.href = '/products';
-  };
-
   return (
     <div className="min-h-screen relative">
-      {/* Cart Icon Top Right */}
-      <button
-        onClick={handleCartClick}
-        className="absolute top-6 right-8 z-50 bg-white rounded-full shadow p-4 hover:bg-gray-100 transition"
-        aria-label="Go to Products"
-      >
-        <ShoppingCart size={48} className="text-gray-700" />
-      </button>
-
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-700 to-green-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,7 +154,7 @@ const Home = () => {
             <div className="flex flex-col lg:flex-row justify-center items-center gap-16">
               {/* Left: Instagram */}
               <div className="flex flex-col items-center justify-center w-full lg:w-1/2 mb-8 lg:mb-0">
-                <span className="text-4xl md:text-5xl font-extrabold mb-8 font-[cursive] italic">Follow us:</span>
+                <span className="text-4xl md:text-5xl font-extrabold mb-8">Follow us</span>
                 <a href="https://www.instagram.com/secondserve.16?igsh=cGloNncxNWtvZmh4" target="_blank" rel="noopener noreferrer">
                   <img 
                     src="/inst.png" 
@@ -179,16 +165,16 @@ const Home = () => {
               </div>
               {/* Right: App Download */}
               <div className="flex flex-col items-center justify-center w-full lg:w-1/2">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 italic mb-8 font-[cursive]">Download our app to unlock all features.</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-8">We are currently in the process of developing our app! Click on any logo to receive a notification after the app's development!</h2>
                 <div className="flex flex-row items-center space-x-8">
-                  <a href="https://play.google.com/store" target="_blank" rel="noopener noreferrer">
+                  <a href="https://forms.gle/f3EnG2QaPhXPQiNQ6" target="_blank" rel="noopener noreferrer">
                     <img 
                       src="/balls.png" 
                       alt="Google Play" 
                       className="w-48 h-auto cursor-pointer"
                     />
                   </a>
-                  <a hrefst="https://www.apple.com/app-store/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://forms.gle/f3EnG2QaPhXPQiNQ6" target="_blank" rel="noopener noreferrer">
                     <img 
                       src="/App-Store-Logo-2020.png" 
                       alt="Download on App Store" 

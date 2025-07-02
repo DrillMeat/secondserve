@@ -75,7 +75,7 @@ const Navbar = () => {
             {/* Support us link */}
             <Link 
               to="/support-us"
-              className="text-green-700 hover:text-green-900 font-semibold mx-2"
+              className={`text-white bg-yellow-500 border border-yellow-500 rounded-lg px-4 py-2 transition-colors duration-200 hover:bg-yellow-600 hover:border-yellow-600 font-semibold mx-2 ${isActive('/support-us') ? 'bg-yellow-600' : ''}`}
             >
               Support us
             </Link>
@@ -234,7 +234,7 @@ const Navbar = () => {
               {/* Support us link */}
               <Link
                 to="/support-us"
-                className="text-green-700 hover:text-green-900 font-semibold"
+                className={`text-white bg-yellow-500 border border-yellow-500 rounded-lg px-4 py-2 transition-colors duration-200 hover:bg-yellow-600 hover:border-yellow-600 font-semibold mx-2 ${isActive('/support-us') ? 'bg-yellow-600' : ''}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Support us

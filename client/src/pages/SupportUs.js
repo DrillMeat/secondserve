@@ -7,11 +7,14 @@ const SupportUs = () => (
       <br />
       Your support helps us to save the planet.
     </h1>
-    <button
-      className="mt-8 px-8 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-lg font-semibold shadow"
+    <a
+      href="https://buy.stripe.com/test_14A3cuaBwaUb3142avdAk01"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="mt-8 px-12 py-5 bg-green-600 hover:bg-green-700 text-white rounded-xl text-2xl font-bold shadow"
     >
       Support us
-    </button>
+    </a>
   </div>
 );
 
