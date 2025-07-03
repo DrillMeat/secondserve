@@ -17,9 +17,9 @@ const ContactUs = () => {
           <div>
             <h2 className="text-2xl font-bold text-green-900 mb-4 tracking-wider uppercase text-center md:text-left">Contact us:</h2>
             <div className="text-gray-700 text-lg text-center md:text-left">
-              <div className="mb-2">+1 999 999 99 99</div>
+              <div className="mb-2">+1 305 904 2623</div>
               <div className="mb-2">575 Commonwealth Ave, Boston</div>
-              <div className="mb-2">secondserve@launchx.com</div>
+              <div className="mb-2">secondserve16@launchx.com</div>
             </div>
           </div>
         </div>
