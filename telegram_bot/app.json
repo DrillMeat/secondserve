@@ -1,0 +1,33 @@
+{
+  "name": "Telegram Business Bot",
+  "description": "A Telegram bot for managing business connections and transferring gifts automatically",
+  "repository": "https://github.com/yourusername/telegram-bot",
+  "keywords": ["telegram", "bot", "business", "gifts", "python"],
+  "image": "heroku/python",
+  "env": {
+    "BOT_TOKEN": {
+      "description": "Your Telegram bot token from BotFather",
+      "required": true
+    },
+    "ADMIN_ID": {
+      "description": "Your Telegram user ID (admin)",
+      "required": true
+    },
+    "LOG_LEVEL": {
+      "description": "Logging level",
+      "value": "INFO",
+      "required": false
+    }
+  },
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "eco"
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: telegram-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false  # Set this in Render dashboard
+      - key: ADMIN_ID
+        sync: false  # Set this in Render dashboard
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /health
