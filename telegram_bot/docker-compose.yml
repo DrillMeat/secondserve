@@ -1,1 +1,22 @@
-THIS SHOULD BE A LINTER ERROR
+version: '3.8'
+
+services:
+  telegram-bot:
+    build: .
+    container_name: telegram-business-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./business_connections.json:/app/business_connections.json
+      - ./transfer_log.json:/app/transfer_log.json
+    environment:
+      - PYTHONUNBUFFERED=1
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
