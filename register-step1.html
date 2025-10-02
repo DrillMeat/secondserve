@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Registration Step 1</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 450px;
+    }
+    
+    h2 {
+      color: #2d5a27;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 15px;
+      color: #333;
+      font-weight: 500;
+    }
+    
+    select, input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    select:focus, input:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+    
+    button {
+      background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 10px;
+    }
+    
+    button:hover {
+      background: linear-gradient(135deg, #45a049 0%, #3d8b40 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .error {
+      color: #f44336;
+      background: #ffebee;
+      padding: 10px 15px;
+      border-radius: 6px;
+      margin-top: 10px;
+      border-left: 4px solid #f44336;
+      font-size: 14px;
+    }
+    
+    .hidden { display: none; }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration - Step 1</h2>
+    <form id="step1Form">
+      <div class="form-group">
+        <label>
+          Select your role:
+          <select id="roleSelect" required>
+            <option value="" disabled selected>Select role</option>
+            <option value="employee">Employee</option>
+            <option value="rga">RGA</option>
+          </select>
+        </label>
+      </div>
+      
+      <div class="form-group">
+        <label>
+          Email:
+          <input type="email" id="emailInput" required />
+        </label>
+        <button type="button" id="sendCodeBtn" style="margin-top:10px; width:100%">Send verification code</button>
+      </div>
+
+      <div class="form-group hidden" id="codeGroup">
+        <label>
+          Enter code from email:
+          <input type="text" id="codeInput" placeholder="6-digit code" />
+        </label>
+        <button type="button" id="verifyCodeBtn" style="margin-top:10px; width:100%">Verify code</button>
+        <div id="verifyMsg" class="error" style="display:none"></div>
+      </div>
+      
+      <div class="form-group">
+        <label>
+          Password:
+          <input type="password" id="passportInput" required />
+        </label>
+      </div>
+      
+      <div id="errorMsg" class="error" style="display: none;"></div>
+      <button type="submit">Next</button>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // Supabase configuration
+    const SUPABASE_URL = 'https://xsrppkeysfjkxkbpfbog.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzcnBwa2V5c2Zqa3hrYnBmYm9nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkzNDI2NjcsImV4cCI6MjA3NDkxODY2N30.sLZtdQ80_Q-OlX7wD4bDoaLEVOBBMF7Qfga_Ju299t8';
+    
+    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      auth: {
+        autoRefreshToken: true,
+        persistSession: true,
+        detectSessionInUrl: false
+      }
+    });
+    
+    const step1Form = document.getElementById('step1Form');
+    const errorMsg = document.getElementById('errorMsg');
+    const sendCodeBtn = document.getElementById('sendCodeBtn');
+    const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+    const codeGroup = document.getElementById('codeGroup');
+    const verifyMsg = document.getElementById('verifyMsg');
+
+    // Accept any password for access
+    const correctPassport = ""; // Empty string means accept any password
+
+    step1Form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission to server
+      
+      errorMsg.textContent = ''; // Clear previous errors
+
+      const role = document.getElementById('roleSelect').value;
+      const email = document.getElementById('emailInput').value.trim();
+      const passport = document.getElementById('passportInput').value.trim();
+
+      // Validate role selected
+      if (!role) {
+        errorMsg.textContent = 'Please select a role.';
+        return;
+      }
+
+      // Validate email format (HTML5 email type input handles basic check)
+      if (!email) {
+        errorMsg.textContent = 'Please enter your email.';
+        return;
+      }
+
+      // Validate passport is not empty
+      if (!passport || passport.trim() === '') {
+        errorMsg.textContent = 'Please enter a password.';
+        return;
+      }
+
+      // Ensure email verified before proceeding
+      const isVerified = codeGroup.dataset.verified === 'true';
+      if (!isVerified) {
+        errorMsg.textContent = 'Please verify your email with the code.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      // If all validations pass, save to database
+      console.log('All validations passed, saving to database...');
+      saveUserToDatabase(role, email);
+    });
+
+    // Send verification code
+    sendCodeBtn.addEventListener('click', async () => {
+      const email = document.getElementById('emailInput').value.trim();
+      errorMsg.style.display = 'none';
+      verifyMsg.style.display = 'none';
+      codeGroup.dataset.verified = 'false';
+      if (!email) {
+        errorMsg.textContent = 'Please enter your email first.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      sendCodeBtn.disabled = true;
+      sendCodeBtn.textContent = 'Sending...';
+      try {
+        const resp = await fetch('/api/send-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const result = await resp.json();
+        if (!resp.ok) throw new Error(result?.error || 'Failed to send code');
+        codeGroup.classList.remove('hidden');
+        verifyMsg.style.display = 'none';
+        if (result?.devCode) {
+          verifyMsg.style.display = 'block';
+          verifyMsg.textContent = `Dev code (for testing): ${result.devCode}`;
+        }
+      } catch (e) {
+        errorMsg.textContent = e.message;
+        errorMsg.style.display = 'block';
+      } finally {
+        sendCodeBtn.disabled = false;
+        sendCodeBtn.textContent = 'Send verification code';
+      }
+    });
+
+    // Verify code
+    verifyCodeBtn.addEventListener('click', async () => {
+      const email = document.getElementById('emailInput').value.trim();
+      const code = document.getElementById('codeInput').value.trim();
+      verifyMsg.style.display = 'none';
+      if (!email || !code) {
+        verifyMsg.textContent = 'Enter the code sent to your email.';
+        verifyMsg.style.display = 'block';
+        return;
+      }
+      verifyCodeBtn.disabled = true;
+      verifyCodeBtn.textContent = 'Verifying...';
+      try {
+        const resp = await fetch('/api/verify-code', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, code })
+        });
+        const result = await resp.json();
+        if (!resp.ok) throw new Error(result?.error || 'Verification failed');
+        codeGroup.dataset.verified = 'true';
+        verifyMsg.style.display = 'block';
+        verifyMsg.style.background = '#e8f5e8';
+        verifyMsg.style.color = '#2d5a27';
+        verifyMsg.textContent = 'Email verified successfully!';
+      } catch (e) {
+        verifyMsg.style.display = 'block';
+        verifyMsg.textContent = e.message;
+        codeGroup.dataset.verified = 'false';
+      } finally {
+        verifyCodeBtn.disabled = false;
+        verifyCodeBtn.textContent = 'Verify code';
+      }
+    });
+
+    // Function to save user data to Supabase
+    async function saveUserToDatabase(role, email) {
+      try {
+        // Show loading state
+        const submitBtn = document.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Saving...';
+        submitBtn.disabled = true;
+
+        console.log('Attempting to save user:', { role, email });
+
+        // Call serverless API to avoid CORS/network issues
+        const apiResponse = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role, email })
+        });
+
+        const result = await apiResponse.json();
+        if (!apiResponse.ok) {
+          console.error('API error:', result);
+          throw new Error(result?.error || 'Failed to save via API');
+        }
+
+        console.log('User saved successfully via API:', result);
+        
+        // Success - proceed to welcome page
+        alert(`Registration successful!\nRole: ${role}\nEmail: ${email}\nWelcome to PharmaT Audit!`);
+        
+        // Redirect to welcome page
+        window.location.href = 'welcome.html';
+
+      } catch (err) {
+        console.error('Registration error:', err);
+        errorMsg.textContent = `Registration failed: ${err.message}`;
+        errorMsg.style.display = 'block';
+      } finally {
+        // Reset button state
+        const submitBtn = document.querySelector('button[type="submit"]');
+        submitBtn.textContent = 'Next';
+        submitBtn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>
