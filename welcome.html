@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome - PharmaT Audit</title>
+  <link rel="stylesheet" href="audit-styles.css">
+  <style>
+    .welcome-container {
+      background: white;
+      padding: 50px;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 600px;
+      margin: 50px auto;
+    }
+    
+    .welcome-icon {
+      font-size: 64px;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+    }
+    
+    .welcome-title {
+      color: var(--secondary-color);
+      font-size: 32px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    
+    .welcome-message {
+      color: #666;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .feature-list {
+      text-align: left;
+      margin: 30px 0;
+      padding: 0;
+      list-style: none;
+    }
+    
+    .feature-list li {
+      padding: 10px 0;
+      color: #555;
+      font-size: 16px;
+    }
+    
+    .feature-list li:before {
+      content: "✓";
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+      color: white;
+      box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+    }
+    
+    .btn-secondary {
+      background: #f8f9fa;
+      color: #333;
+      border: 2px solid #e0e0e0;
+    }
+    
+    .btn-secondary:hover {
+      background: #e9ecef;
+      border-color: var(--primary-color);
+    }
+    
+    @media (max-width: 600px) {
+      .welcome-container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-container">
+    <div class="welcome-icon">🎉</div>
+    <h1 class="welcome-title">Welcome to PharmaT Audit!</h1>
+    <p class="welcome-message">
+      Congratulations! Your registration has been completed successfully. 
+      You now have access to our comprehensive pharmaceutical audit platform.
+    </p>
+    
+    <ul class="feature-list">
+      <li>Comprehensive audit management system</li>
+      <li>Real-time compliance monitoring</li>
+      <li>Automated report generation</li>
+      <li>Regulatory compliance tracking</li>
+      <li>Team collaboration tools</li>
+      <li>Advanced analytics and insights</li>
+    </ul>
+    
+    <div class="action-buttons">
+      <a href="dashboard.html" class="btn btn-primary">Go to Dashboard</a>
+      <a href="profile.html" class="btn btn-secondary">Complete Profile</a>
+    </div>
+    
+    <p style="margin-top: 30px; color: #888; font-size: 14px;">
+      Need help getting started? Check out our 
+      <a href="help.html" style="color: var(--primary-color);">user guide</a> 
+      or contact our support team.
+    </p>
+  </div>
+</body>
+</html>

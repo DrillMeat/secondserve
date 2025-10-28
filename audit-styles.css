@@ -1,0 +1,296 @@
+/* PharmaT Audit Styles */
+:root {
+  --primary-color: #4caf50;
+  --primary-dark: #45a049;
+  --secondary-color: #2d5a27;
+  --background-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background-gradient);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-header {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.dashboard-header h1 {
+  color: var(--secondary-color);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.dashboard-nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.nav-link.logout {
+  background: #e74c3c;
+  color: white;
+}
+
+.nav-link.logout:hover {
+  background: #c0392b;
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: var(--secondary-color);
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.stat-description {
+  color: #666;
+  font-size: 14px;
+}
+
+/* Recent Audits Section */
+.recent-audits {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+}
+
+.recent-audits h2 {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.audit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.audit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border: 2px solid #f0f0f0;
+  border-radius: 10px;
+  transition: var(--transition);
+}
+
+.audit-item:hover {
+  border-color: var(--primary-color);
+  background: #f9f9f9;
+}
+
+.audit-info h4 {
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
+
+.audit-info p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.status {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.status.in-progress {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.pending {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Quick Actions Section */
+.quick-actions {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: var(--card-shadow);
+}
+
+.quick-actions h2 {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.action-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+}
+
+.btn-icon {
+  font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .dashboard-nav {
+    justify-content: center;
+  }
+  
+  .audit-item {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+  
+  .dashboard-header,
+  .recent-audits,
+  .quick-actions {
+    padding: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}

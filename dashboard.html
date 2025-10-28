@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - PharmaT Audit</title>
+<link rel="stylesheet" href="audit-styles.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <h1>PharmaT Audit Dashboard</h1>
+      <nav class="dashboard-nav">
+        <a href="#audits" class="nav-link active">Audits</a>
+        <a href="#reports" class="nav-link">Reports</a>
+        <a href="#compliance" class="nav-link">Compliance</a>
+        <a href="#settings" class="nav-link">Settings</a>
+        <a href="index.html" class="nav-link logout">Logout</a>
+      </nav>
+    </header>
+    
+    <main class="dashboard-main">
+      <div class="dashboard-grid">
+        <div class="card">
+          <h3>Active Audits</h3>
+          <div class="stat-number">12</div>
+          <p class="stat-description">Currently in progress</p>
+        </div>
+        
+        <div class="card">
+          <h3>Completed Audits</h3>
+          <div class="stat-number">45</div>
+          <p class="stat-description">This quarter</p>
+        </div>
+        
+        <div class="card">
+          <h3>Compliance Score</h3>
+          <div class="stat-number">94%</div>
+          <p class="stat-description">Overall rating</p>
+        </div>
+        
+        <div class="card">
+          <h3>Pending Reviews</h3>
+          <div class="stat-number">7</div>
+          <p class="stat-description">Require attention</p>
+        </div>
+      </div>
+      
+      <div class="recent-audits">
+        <h2>Recent Audit Activities</h2>
+        <div class="audit-list">
+          <div class="audit-item">
+            <div class="audit-info">
+              <h4>Manufacturing Facility A - GMP Audit</h4>
+              <p>Status: <span class="status in-progress">In Progress</span></p>
+              <p class="audit-date">Started: March 15, 2024</p>
+            </div>
+            <button class="btn-primary">View Details</button>
+          </div>
+          
+          <div class="audit-item">
+            <div class="audit-info">
+              <h4>Distribution Center B - GDP Compliance</h4>
+              <p>Status: <span class="status completed">Completed</span></p>
+              <p class="audit-date">Completed: March 10, 2024</p>
+            </div>
+            <button class="btn-primary">View Report</button>
+          </div>
+          
+          <div class="audit-item">
+            <div class="audit-info">
+              <h4>Pharmacy Chain C - Quality Review</h4>
+              <p>Status: <span class="status pending">Pending Review</span></p>
+              <p class="audit-date">Submitted: March 8, 2024</p>
+            </div>
+            <button class="btn-primary">Review</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-buttons">
+          <button class="action-btn" onclick="startNewAudit()">
+            <span class="btn-icon">+</span>
+            Start New Audit
+          </button>
+          <button class="action-btn" onclick="generateReport()">
+            <span class="btn-icon">📊</span>
+            Generate Report
+          </button>
+          <button class="action-btn" onclick="scheduleAudit()">
+            <span class="btn-icon">📅</span>
+            Schedule Audit
+          </button>
+          <button class="action-btn" onclick="viewCompliance()">
+            <span class="btn-icon">✓</span>
+            Compliance Check
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+  
+  <script src="audit-dashboard.js"></script>
+</body>
+</html>

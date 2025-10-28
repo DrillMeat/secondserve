@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help & User Guide - PharmaT Audit</title>
+  <link rel="stylesheet" href="audit-styles.css">
+  <style>
+    .help-container {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+    
+    .help-header {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .help-content {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 30px;
+    }
+    
+    .help-sidebar {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+      height: fit-content;
+      position: sticky;
+      top: 20px;
+    }
+    
+    .help-nav {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .help-nav li {
+      margin-bottom: 10px;
+    }
+    
+    .help-nav a {
+      color: #666;
+      text-decoration: none;
+      padding: 10px 15px;
+      display: block;
+      border-radius: 8px;
+      transition: var(--transition);
+    }
+    
+    .help-nav a:hover,
+    .help-nav a.active {
+      background: var(--primary-color);
+      color: white;
+    }
+    
+    .help-main {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .help-section {
+      display: none;
+    }
+    
+    .help-section.active {
+      display: block;
+    }
+    
+    .help-section h2 {
+      color: var(--secondary-color);
+      margin-bottom: 20px;
+    }
+    
+    .help-section h3 {
+      color: var(--primary-color);
+      margin: 25px 0 15px 0;
+    }
+    
+    .help-section p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    
+    .help-section ul {
+      margin-bottom: 15px;
+      padding-left: 20px;
+    }
+    
+    .help-section li {
+      margin-bottom: 8px;
+    }
+    
+    .code-block {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 6px;
+      padding: 15px;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+    }
+    
+    .alert {
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+    }
+    
+    .alert-info {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      color: #1565c0;
+    }
+    
+    .alert-warning {
+      background: #fff3e0;
+      border-left: 4px solid #ff9800;
+      color: #ef6c00;
+    }
+    
+    @media (max-width: 768px) {
+      .help-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .help-sidebar {
+        position: static;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="help-container">
+    <div class="help-header">
+      <h1>PharmaT Audit Help Center</h1>
+      <p>Everything you need to know about using the PharmaT Audit platform</p>
+    </div>
+    
+    <div class="help-content">
+      <nav class="help-sidebar">
+        <ul class="help-nav">
+          <li><a href="#getting-started" class="active">Getting Started</a></li>
+          <li><a href="#dashboard">Dashboard Overview</a></li>
+          <li><a href="#audits">Managing Audits</a></li>
+          <li><a href="#reports">Reports & Analytics</a></li>
+          <li><a href="#compliance">Compliance Tracking</a></li>
+          <li><a href="#settings">Account Settings</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+          <li><a href="#contact">Contact Support</a></li>
+        </ul>
+      </nav>
+      
+      <main class="help-main">
+        <section id="getting-started" class="help-section active">
+          <h2>Getting Started</h2>
+          <p>Welcome to PharmaT Audit! This guide will help you get up and running quickly.</p>
+          
+          <h3>First Steps</h3>
+          <ol>
+            <li><strong>Complete Your Profile:</strong> Fill in your professional information for better audit recommendations</li>
+            <li><strong>Explore the Dashboard:</strong> Familiarize yourself with the main interface</li>
+            <li><strong>Create Your First Audit:</strong> Use the "Start New Audit" button to begin</li>
+            <li><strong>Invite Team Members:</strong> Add colleagues to collaborate on audits</li>
+          </ol>
+          
+          <div class="alert alert-info">
+            <strong>Tip:</strong> Start with a simple internal audit to get familiar with the platform before conducting external audits.
+          </div>
+          
+          <h3>System Requirements</h3>
+          <ul>
+            <li>Modern web browser (Chrome, Firefox, Safari, Edge)</li>
+            <li>Stable internet connection</li>
+            <li>JavaScript enabled</li>
+            <li>Minimum screen resolution: 1024x768</li>
+          </ul>
+        </section>
+        
+        <section id="dashboard" class="help-section">
+          <h2>Dashboard Overview</h2>
+          <p>The dashboard is your central hub for managing all audit activities.</p>
+          
+          <h3>Key Components</h3>
+          <ul>
+            <li><strong>Statistics Cards:</strong> Quick overview of active audits, completed audits, compliance scores, and pending reviews</li>
+            <li><strong>Recent Audits:</strong> List of your most recent audit activities with status indicators</li>
+            <li><strong>Quick Actions:</strong> Fast access to common tasks like starting new audits and generating reports</li>
+            <li><strong>Navigation Menu:</strong> Access to different sections of the platform</li>
+          </ul>
+          
+          <h3>Status Indicators</h3>
+          <ul>
+            <li><span style="color: #856404;">In Progress:</span> Audit is currently being conducted</li>
+            <li><span style="color: #155724;">Completed:</span> Audit has been finished and report generated</li>
+            <li><span style="color: #721c24;">Pending:</span> Audit requires review or action</li>
+          </ul>
+        </section>
+        
+        <section id="audits" class="help-section">
+          <h2>Managing Audits</h2>
+          <p>Learn how to create, manage, and track your pharmaceutical audits.</p>
+          
+          <h3>Creating a New Audit</h3>
+          <ol>
+            <li>Click "Start New Audit" from the dashboard</li>
+            <li>Select audit type (GMP, GDP, GCP, etc.)</li>
+            <li>Fill in audit details and scope</li>
+            <li>Assign team members and reviewers</li>
+            <li>Set schedule and milestones</li>
+            <li>Launch the audit</li>
+          </ol>
+          
+          <h3>Audit Types Supported</h3>
+          <ul>
+            <li><strong>GMP (Good Manufacturing Practice):</strong> Manufacturing facility audits</li>
+            <li><strong>GDP (Good Distribution Practice):</strong> Distribution and supply chain audits</li>
+            <li><strong>GCP (Good Clinical Practice):</strong> Clinical trial audits</li>
+            <li><strong>Pharmacovigilance:</strong> Drug safety monitoring audits</li>
+            <li><strong>Quality System:</strong> Overall quality management system audits</li>
+          </ul>
+          
+          <div class="alert alert-warning">
+            <strong>Important:</strong> Ensure all audit team members have appropriate access permissions before starting an audit.
+          </div>
+        </section>
+        
+        <section id="reports" class="help-section">
+          <h2>Reports & Analytics</h2>
+          <p>Generate comprehensive reports and analyze audit data.</p>
+          
+          <h3>Report Types</h3>
+          <ul>
+            <li><strong>Audit Summary Reports:</strong> High-level overview of audit findings</li>
+            <li><strong>Detailed Compliance Reports:</strong> In-depth analysis of compliance status</li>
+            <li><strong>Trend Analysis:</strong> Historical data and performance trends</li>
+            <li><strong>Action Item Reports:</strong> Tracking of corrective and preventive actions</li>
+          </ul>
+          
+          <h3>Generating Reports</h3>
+          <ol>
+            <li>Navigate to the Reports section</li>
+            <li>Select report type and parameters</li>
+            <li>Choose date range and filters</li>
+            <li>Generate and download report</li>
+          </ol>
+        </section>
+        
+        <section id="compliance" class="help-section">
+          <h2>Compliance Tracking</h2>
+          <p>Monitor and maintain regulatory compliance across your organization.</p>
+          
+          <h3>Compliance Dashboard</h3>
+          <p>The compliance dashboard provides real-time visibility into:</p>
+          <ul>
+            <li>Overall compliance score</li>
+            <li>Regulatory requirements status</li>
+            <li>Upcoming compliance deadlines</li>
+            <li>Risk assessments and mitigation plans</li>
+          </ul>
+          
+          <h3>Setting Up Compliance Monitoring</h3>
+          <ol>
+            <li>Define regulatory requirements for your organization</li>
+            <li>Set up automated compliance checks</li>
+            <li>Configure alerts and notifications</li>
+            <li>Establish review cycles and responsibilities</li>
+          </ol>
+        </section>
+        
+        <section id="settings" class="help-section">
+          <h2>Account Settings</h2>
+          <p>Customize your account and platform preferences.</p>
+          
+          <h3>Profile Settings</h3>
+          <ul>
+            <li>Update personal and professional information</li>
+            <li>Manage certifications and qualifications</li>
+            <li>Set timezone and notification preferences</li>
+            <li>Configure security settings</li>
+          </ul>
+          
+          <h3>Organization Settings</h3>
+          <ul>
+            <li>Manage team members and permissions</li>
+            <li>Configure audit templates and workflows</li>
+            <li>Set up integration with external systems</li>
+            <li>Customize branding and reporting formats</li>
+          </ul>
+        </section>
+        
+        <section id="troubleshooting" class="help-section">
+          <h2>Troubleshooting</h2>
+          <p>Common issues and their solutions.</p>
+          
+          <h3>Login Issues</h3>
+          <ul>
+            <li>Verify your email address and password</li>
+            <li>Check if your account has been activated</li>
+            <li>Clear browser cache and cookies</li>
+            <li>Try using a different browser</li>
+          </ul>
+          
+          <h3>Performance Issues</h3>
+          <ul>
+            <li>Check your internet connection</li>
+            <li>Close unnecessary browser tabs</li>
+            <li>Disable browser extensions temporarily</li>
+            <li>Try refreshing the page</li>
+          </ul>
+          
+          <h3>Data Sync Issues</h3>
+          <ul>
+            <li>Ensure you have a stable internet connection</li>
+            <li>Check if you have the necessary permissions</li>
+            <li>Try logging out and back in</li>
+            <li>Contact support if issues persist</li>
+          </ul>
+        </section>
+        
+        <section id="contact" class="help-section">
+          <h2>Contact Support</h2>
+          <p>Need additional help? Our support team is here to assist you.</p>
+          
+          <h3>Support Channels</h3>
+          <ul>
+            <li><strong>Email:</strong> support@pharmat-audit.com</li>
+            <li><strong>Phone:</strong> +1 (555) 123-4567</li>
+            <li><strong>Live Chat:</strong> Available 24/7 through the platform</li>
+            <li><strong>Knowledge Base:</strong> Comprehensive documentation and FAQs</li>
+          </ul>
+          
+          <h3>Before Contacting Support</h3>
+          <ol>
+            <li>Check this help guide for solutions</li>
+            <li>Try the troubleshooting steps</li>
+            <li>Gather relevant information (error messages, screenshots)</li>
+            <li>Note the steps that led to the issue</li>
+          </ol>
+          
+          <div class="alert alert-info">
+            <strong>Response Times:</strong> We aim to respond to all support requests within 24 hours during business days.
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.help-nav a');
+      const sections = document.querySelectorAll('.help-section');
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // Remove active class from all links and sections
+          navLinks.forEach(l => l.classList.remove('active'));
+          sections.forEach(s => s.classList.remove('active'));
+          
+          // Add active class to clicked link
+          this.classList.add('active');
+          
+          // Show corresponding section
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
